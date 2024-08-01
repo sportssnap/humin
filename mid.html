@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        .video-container {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            height: 400px; /* Increase the height as needed */
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .top-text {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <iframe id="video-frame" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"></iframe>
+        <div class="top-text">www.sportssnap.net</div>
+    </div>
+
+    <script>
+        // Function to get query parameter value by name
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Extract the mid parameter from the URL
+        const mid = getQueryParam('mid');
+
+        // Construct the iframe URL with the extracted mid parameter
+        const iframeUrl = `https://player.huminbird.cn/detail.html?v=104&mid=${mid}&type=1&pid=6&isTips=1&isLogin=0&sbtcolor=4368fe&pfont=65px`;
+
+        // Set the iframe's src attribute
+        document.getElementById('video-frame').src = iframeUrl;
+    </script>
+</body>
+</html>
